@@ -70,6 +70,7 @@ Bijvoorbeeld: uitvoeren van code/design reviews, user tests met gebruikers, toeg
 Deze opdracht is done als:
 - [ ] Je hebt gewerkt volgens de verschillende fases van de development-lifecycle en je hebt je werk gedocumenteerd in de Readme en Wiki
 - [ ] Je toont aan dat je in de analysefase verschillende methoden en technieken hebt ingezet om te inventariseren wat er moet gebeuren
+
 - [ ] Je toont aan dat je in de ontwerpfase verschillende methoden en technieken hebt ingezet die ervoor zorgen dat je precies weet wat je moet bouwen
 - [ ] Je toont aan dat je in de bouwfase verschillende methoden en technieken hebt ingezet om het ontwerp te realiseren
 - [ ] Je toont aan dat je in de integratiefase verschillende methoden en technieken hebt ingezet om je website live te zetten
