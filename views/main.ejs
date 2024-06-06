@@ -1,0 +1,41 @@
+<%- include('components/head') %>
+<main>
+    <h1><%= site.title %></h1>
+    <section class="allScans">
+        <!-- automatisch scan resultaat met chart -->
+        <% if (allScans && allScans.length > 0) { %>
+            <% allScans.forEach(item => { %>
+                <article class="auto-scan">
+                    <h1><%= item.title %></h1>
+                    <p><%= item.description %></p>
+                    <div class="pie-chart">
+                       <%= item.score %>
+                    </div>
+                </article>   
+            <% }); %>
+        <% } else { %>
+            <p>No scans available for this site.</p>
+        <% } %>
+        
+        <section class="allErrors">
+            <% if (allScans && allScans.length > 0) { %>
+                <% allScans.forEach(scan => { %>
+                    <article>
+                        <h2>Errors for <%= scan.title %></h2>
+                        <ul>
+                            <% if (scan.result && scan.result.length > 0) { %>
+                                <% scan.result.forEach(error => { %>
+                                    <li><%= error.title %>: <%= error.amount %></li>
+                                <% }); %>
+                            <% } else { %>
+                                <li>No errors found for this scan.</li>
+                            <% } %>
+                        </ul>
+                    </article>
+                <% }); %>
+            <% } %>
+        </section> 
+    </section>
+</main>
+</body>
+</html>

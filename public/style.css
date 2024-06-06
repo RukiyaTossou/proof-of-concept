@@ -1,0 +1,13 @@
+:root {
+    --background-color-body:#F0F0F0;
+    --background-color-article:#FFFFFF;
+}
+
+body {
+    background-color: var(--background-color-body);
+}
+
+.auto-scan {
+    background-color: var(--background-color-article);
+    border-radius:0.5rem;
+}

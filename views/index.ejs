@@ -1,21 +1,12 @@
-<!DOCTYPE html>
-<html lang="nl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FutureReadyDesign</title>
-</head>
-<body>
-    <section class="contianer">
-        <h1>Title</h1>
-        <section>
-            <!-- automatisch scan resultaat met chart -->
-        </section>
-        <article>
-            <!-- Alle soorten errors -->
-        </article>
-    </section>
-    
+<%- include('components/head')%>
+    <main>
+        <h1>Kies je website</h1>
+        <div>
+            <% site.forEach(item => { %>
+                
+                <a href="/site/<% item.id %>"><%= item.title %></a>
+            <% }); %>
+        </div>
+    </main>
 </body>
 </html>
-
