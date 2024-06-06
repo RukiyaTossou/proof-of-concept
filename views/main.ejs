@@ -3,6 +3,7 @@
     <h1><%= site.title %></h1>
     <section class="allScans">
         <!-- automatisch scan resultaat met chart -->
+        <!-- als er scans zijn laat dan de layout zien  -->
         <% if (allScans && allScans.length > 0) { %>
             <% allScans.forEach(item => { %>
                 <article class="auto-scan">
@@ -11,31 +12,31 @@
                     <div class="pie-chart">
                        <%= item.score %>
                     </div>
-                </article>   
+                   
+                </article>
+                <section class="allErrors">
+                    <article>
+                        <h2>Errors voor <%= item.title %></h2>
+                        <ul>
+                            <!-- Als er resultaten zijn en als lengte groter is dan 0 -->
+                            <!--Loor door elk error item en laat de title zien en errors -->
+                            <% if (item.result && item.result.length > 0) { %>
+                                <% item.result.forEach(error => { %>
+                                    <p><%= error.title %>: <%= error.amount %></p>
+                                <% }); %>
+                            <% } else  { %>
+                                <!-- als er geen scans zijn  -->
+                                <p>Geen errors gevonden </p> 
+                            <% } %>
+                        </ul>
+                    </article>
+                </section>
             <% }); %>
         <% } else { %>
             <p>No scans available for this site.</p>
         <% } %>
-        
-        <section class="allErrors">
-            <% if (allScans && allScans.length > 0) { %>
-                <% allScans.forEach(scan => { %>
-                    <article>
-                        <h2>Errors for <%= scan.title %></h2>
-                        <ul>
-                            <% if (scan.result && scan.result.length > 0) { %>
-                                <% scan.result.forEach(error => { %>
-                                    <li><%= error.title %>: <%= error.amount %></li>
-                                <% }); %>
-                            <% } else { %>
-                                <li>No errors found for this scan.</li>
-                            <% } %>
-                        </ul>
-                    </article>
-                <% }); %>
-            <% } %>
-        </section> 
     </section>
 </main>
 </body>
 </html>
+

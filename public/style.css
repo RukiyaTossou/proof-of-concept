@@ -11,3 +11,7 @@ body {
     background-color: var(--background-color-article);
     border-radius:0.5rem;
 }
+
+.allErrors {
+    background-color: 	bisque;
+}
