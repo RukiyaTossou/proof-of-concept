@@ -13,20 +13,17 @@
                     <p><%= item.description %></p>
                     <div class="pie-chart">
                        <%= item.score %>
-                       
                     </div>
                    
                 </article>
                 <h1>Errors voor <%= item.title %></h2>
                 <section class="allErrors">
-                  
-                        
                         <ul>
                             <!-- Als er resultaten zijn en als lengte groter is dan 0 -->
-                            <!--Loor door elk error item en laat de title zien en errors -->
+                            <!--Loop door elk error item en laat de title zien en errors -->
                             <% if (item.result && item.result.length > 0) { %>
                                 <% item.result.forEach(error => { %>
-                                    <article class="single-error"><p><%= error.title %> <%= error.amount %> </p> <img class="icon-img-error-type" src="/images/landscape-icon.svg" alt="icon"></article>
+                                    <li class="single-error"><p><%= error.title %> <%= error.amount %> </p> <img class="icon-img-error-type" src="/images/landscape-icon.svg" alt="icon"></li>
                                 <% }); %>
                             <% } else  { %>
                                 <!-- als er geen scans zijn  -->

@@ -38,14 +38,14 @@ app.get('/', async function (request, response) {
   
 })
 
-// Definieer de route voor de detailpagina van een specifieke site
+//D route voor de detailpagina van een specifieke site
 app.get('/site/:id', async function (request, response) {
   try {
     // Haal de gegevens op
     const { site, allScans, nieuwekijkScans } = await fetchData()
     const siteId = request.params.id
     
-    // Zoek de specifieke site op basis van de ID
+    // Zoek de site op basis van de ID
     const currentSite = site.find(s => s.id == siteId)
     
     // Als de site niet gevonden wordt, stuur een 404 foutmelding
