@@ -38,7 +38,7 @@ app.get('/', async function (request, response) {
   
 })
 
-//D route voor de detailpagina van een specifieke site
+//De route voor de detailpagina van een specifieke site
 app.get('/site/:id', async function (request, response) {
   try {
     // Haal de gegevens op
@@ -59,7 +59,7 @@ app.get('/site/:id', async function (request, response) {
     // Filter scans op basis van de gevonden IDs
     const siteScans = allScans.filter(scan => scanIds.includes(scan.id))
 
-    // Log de site, scan IDs en geselecteerde scans voor debuggen en  snelle check 
+    // Log de site, scan IDs en geselecteerde scans  een  snelle check 
     console.log('Current Site:', currentSite)
     console.log('Scan IDs:', scanIds)
     console.log('Site Scans:', siteScans)
