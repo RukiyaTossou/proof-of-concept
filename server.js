@@ -38,7 +38,6 @@ app.get('/', async function (request, response) {
   
 })
 
-
 // Definieer de route voor de detailpagina van een specifieke site
 app.get('/site/:id', async function (request, response) {
   try {

@@ -1,6 +1,8 @@
+
 <%- include('components/head') %>
 <main>
-    <h1><%= site.title %></h1>
+    <header>  <h1><%= site.title %></h1></header>
+  
     <section class="allScans">
         <!-- automatisch scan resultaat met chart -->
         <!-- als er scans zijn laat dan de layout zien  -->
@@ -11,30 +13,34 @@
                     <p><%= item.description %></p>
                     <div class="pie-chart">
                        <%= item.score %>
+                       
                     </div>
                    
                 </article>
+                <h1>Errors voor <%= item.title %></h2>
                 <section class="allErrors">
-                    <article>
-                        <h2>Errors voor <%= item.title %></h2>
+                  
+                        
                         <ul>
                             <!-- Als er resultaten zijn en als lengte groter is dan 0 -->
                             <!--Loor door elk error item en laat de title zien en errors -->
                             <% if (item.result && item.result.length > 0) { %>
                                 <% item.result.forEach(error => { %>
-                                    <p><%= error.title %>: <%= error.amount %></p>
+                                    <article class="single-error"><p><%= error.title %> <%= error.amount %> </p> <img class="icon-img-error-type" src="/images/landscape-icon.svg" alt="icon"></article>
                                 <% }); %>
                             <% } else  { %>
                                 <!-- als er geen scans zijn  -->
                                 <p>Geen errors gevonden </p> 
                             <% } %>
                         </ul>
-                    </article>
+                  
                 </section>
             <% }); %>
         <% } else { %>
             <p>No scans available for this site.</p>
         <% } %>
+       
+       
     </section>
 </main>
 </body>

@@ -5,13 +5,34 @@
 
 body {
     background-color: var(--background-color-body);
+    font-family: "Outfit", sans-serif;
 }
 
+
 .auto-scan {
+    display: flex;
     background-color: var(--background-color-article);
-    border-radius:0.5rem;
+    border-radius: 0.5rem;
+    max-width: 865px;
+    height: 306px;
+    
 }
 
 .allErrors {
-    background-color: 	bisque;
+    max-width: 25rem;
+    display:flex;
+    flex-wrap:wrap;
+ 
+}
+
+.single-error {
+    padding: 2rem;
+    margin: 20px;
+    display:flex;
+    align-items:center;
+    border-radius:0.5rem;
+    background-color: var(--background-color-article);
+}
+.icon-img-error-type {
+    margin-left:1rem;
 }
