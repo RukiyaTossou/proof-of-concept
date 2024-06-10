@@ -1,33 +1,61 @@
 :root {
     --background-color-body:#F0F0F0;
     --background-color-article:#FFFFFF;
+    --text-color-title: #5D666A;
 }
 
 body {
     background-color: var(--background-color-body);
     font-family: "Outfit", sans-serif;
+
+}
+header {
+    display: flex;
+}
+
+.allScans {
+    display: flex;
+    width: 55em;
+    overflow:hidden;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    margin-left:1rem;
 }
 
 
 .auto-scan {
-    display: flex;
+    /* display: flex; */
     background-color: var(--background-color-article);
     border-radius: 0.5rem;
     max-width: 865px;
     height: 306px;
+    flex: 0 0 40rem; 
+    scroll-snap-align: start;
+     box-sizing: border-box;
+    padding:20px;
+   
+}
+
+.title.scan { 
+    white-space: nowrap;
+    color: var(--text-color-title);
+ 
+}
+.scan-details {
+    flex-direction: column;
     
 }
 
 .allErrors {
     max-width: 25rem;
     display:flex;
-    flex-wrap:wrap;
+    flex-wrap:wrap; 
  
 }
 
 .single-error {
     padding: 2rem;
-    margin: 20px;
+    margin: 0 20px 20px;
     display:flex;
     align-items:center;
     border-radius:0.5rem;
