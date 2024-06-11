@@ -17,11 +17,31 @@ header {
 
 .allScans {
     display: flex;
-    width: 72rem;
+    width: 70rem;
     overflow:hidden;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
-    margin-left:1rem;
+     margin-left:1rem; 
+}
+
+.single-scan{
+    display:grid;
+    grid-template-columns: 1f 1f;
+    grid-template-rows: 1fr 1fr 1fr;   
+}
+
+.single-scan .allErrors {
+    grid-column:2 ;
+    grid-row:1/3 ;
+}
+.single-scan .auto-scan {
+    grid-column:1 / 2 ;
+    grid-row:1 ;
+}
+
+.single-scan .bar-chart {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
 }
 
 

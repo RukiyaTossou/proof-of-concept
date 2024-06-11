@@ -13,6 +13,8 @@
         <!-- als er scans zijn laat dan de layout zien  -->
         <% if (allScans && allScans.length > 0) { %>
             <% allScans.forEach(item => { %>
+                <section class="single-scan">
+
                 <article class="auto-scan" aria-label="Autoscan resultaat">
                     <h1 class="title.scan"><%= item.title %></h1>
                     <p class="scan-details"><%= item.description %></p>
@@ -22,10 +24,39 @@
 
                         </div>
                     </div>
-            
+                    
                 </article>
              
-               
+                <section >
+                    <div class="bar-chart">
+                        <canvas id="myChart-<%= item.id %>"></canvas>
+                    </div>
+                      
+                      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                      
+                      <script>
+                        const ctx<%= item.id %> = document.getElementById('myChart-<%= item.id %>');
+                      
+                        new Chart(ctx<%= item.id %>, {
+                          type: 'bar',
+                          data: {
+                            labels: ['Contrast', 'Structureel', 'Alt-teksten',  'Aria-labels'],
+                            datasets: [{
+                              label: 'Soorten foutmeldingen',
+                              data: [<% item.result.slice(1).forEach(error=> { %> '<%= error.amount %>', <%}); %>],
+                              borderWidth: 1    
+                            }] 
+                          },
+                          options: {
+                            scales: {
+                              y: {
+                                beginAtZero: true
+                              }
+                            }
+                          }
+                        });
+                      </script>
+                </section>
                 <section class="allErrors">
                        
                             <!-- Als er resultaten zijn en als lengte groter is dan 0 -->
@@ -44,39 +75,11 @@
                                 <p>Geen errors gevonden </p> 
                             <% } %>
 
-                            <section>
-                
-                                <div>
-                                    <canvas id="myChart-<%= item.id %>"></canvas>
-                                </div>
-                                  
-                                  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-                                  
-                                  <script>
-                                    const ctx<%= item.id %> = document.getElementById('myChart-<%= item.id %>');
-                                  
-                                    new Chart(ctx<%= item.id %>, {
-                                      type: 'bar',
-                                      data: {
-                                        labels: ['Contrast', 'Structureel', 'Alt-teksten',  'Aria-labels'],
-                                        datasets: [{
-                                          label: 'Soorten foutmeldingen',
-                                          data: [<% item.result.slice(1).forEach(error=> { %> '<%= error.amount %>', <%}); %>],
-                                          borderWidth: 1    
-                                        }] 
-                                      },
-                                      options: {
-                                        scales: {
-                                          y: {
-                                            beginAtZero: true
-                                          }
-                                        }
-                                      }
-                                    });
-                                  </script>
-                            </section>
+                           
                           
                 </section>
+                </section>
+                
             <% }); %>
         <% } else { %>
             <p>No scans available for this site.</p>
