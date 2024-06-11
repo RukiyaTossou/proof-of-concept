@@ -16,45 +16,16 @@
                 <article class="auto-scan" aria-label="Autoscan resultaat">
                     <h1 class="title.scan"><%= item.title %></h1>
                     <p class="scan-details"><%= item.description %></p>
-                    <div class="pie-chart">
-                       <%= item.score %>
-                    </div>
-                    <% console.log(item.id) %>
-                    <section>
-                        <% item.result.forEach(error => { %>
-                            
-                        <% }); %>
-                        <div>
-                            <canvas id="myChart-<%= item.id %>"></canvas>
+                    <div class="doughnut-chart">
+                        <div class="outer">
+                                <p class="autoScan-score"><%= item.score %> %</p>
+
                         </div>
-                          
-                          <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-                          
-                          <script>
-                            const ctx<%= item.id %> = document.getElementById('myChart-<%= item.id %>');
-                          
-                            new Chart(ctx<%= item.id %>, {
-                              type: 'bar',
-                              data: {
-                                labels: ['Contrast', 'Structureel', 'Alt-teksten',  'Aria-labels'],
-                                datasets: [{
-                                  label: '# of Votes',
-                                  data: [<% item.result.forEach(error=> { %> '<%= error.amount %>', <%}); %>],
-                                  borderWidth: 1    
-                                }]  
-                              },
-                              options: {
-                                scales: {
-                                  y: {
-                                    beginAtZero: true
-                                  }
-                                }
-                              }
-                            });
-                          </script>
-                    </section>
+                    </div>
+            
                 </article>
              
+               
                 <section class="allErrors">
                        
                             <!-- Als er resultaten zijn en als lengte groter is dan 0 -->
@@ -63,6 +34,7 @@
                                 <% item.result.forEach(error => { %>
                                     <article class="single-error">
                                         <p><%= error.title %></p>
+                                        
                                         <p class="error-amount"> <%= error.amount %> </p>
                                          <img class="icon-img-error-type" src="/images/landscape-icon.svg" alt="icon">
                                         </article>
@@ -71,6 +43,38 @@
                                 <!-- als er geen scans zijn  -->
                                 <p>Geen errors gevonden </p> 
                             <% } %>
+
+                            <section>
+                
+                                <div>
+                                    <canvas id="myChart-<%= item.id %>"></canvas>
+                                </div>
+                                  
+                                  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                                  
+                                  <script>
+                                    const ctx<%= item.id %> = document.getElementById('myChart-<%= item.id %>');
+                                  
+                                    new Chart(ctx<%= item.id %>, {
+                                      type: 'bar',
+                                      data: {
+                                        labels: ['Contrast', 'Structureel', 'Alt-teksten',  'Aria-labels'],
+                                        datasets: [{
+                                          label: 'Soorten foutmeldingen',
+                                          data: [<% item.result.slice(1).forEach(error=> { %> '<%= error.amount %>', <%}); %>],
+                                          borderWidth: 1    
+                                        }] 
+                                      },
+                                      options: {
+                                        scales: {
+                                          y: {
+                                            beginAtZero: true
+                                          }
+                                        }
+                                      }
+                                    });
+                                  </script>
+                            </section>
                           
                 </section>
             <% }); %>
@@ -81,7 +85,7 @@
     </section>
  
     
- 
+ <p class="percentage">54</p>
 </main>
 </body>
 </html>

@@ -7,6 +7,8 @@
 body {
     background-color: var(--background-color-body);
     font-family: "Outfit", sans-serif;
+    display: flex;
+    justify-content: center;
 
 }
 header {
@@ -15,7 +17,7 @@ header {
 
 .allScans {
     display: flex;
-    width: 55em;
+    width: 72rem;
     overflow:hidden;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
@@ -24,18 +26,67 @@ header {
 
 
 .auto-scan {
-    /* display: flex; */
+    display: flex;
     background-color: var(--background-color-article);
     border-radius: 0.5rem;
-    max-width: 865px;
+    width: 865px;
     height: 306px;
-    flex: 0 0 40rem; 
+    flex: 0 0 auto; 
     scroll-snap-align: start;
      box-sizing: border-box;
     padding:20px;
    
 }
+.scan-details {
+    max-width: 400px;
+}
 
+/* doughnnut chart */
+.doughnut-chart {
+    width: 10rem;
+    height: 10rem;
+    display:flex;
+    position:relative;
+   
+}
+
+.autoScan-score {
+    position: absolute;
+    z-index:10;
+    font-size:30px;
+}
+
+.outer {
+    width: 8rem;
+    height: 8rem;
+    padding: 1.5rem;
+     display: flex;
+       align-items: center;
+    justify-content: center;
+    border:1px solid #cbd6e8 ;
+    border-radius: 50%;
+    background: conic-gradient(#4285f4 1.5deg, #fff 0deg);
+}
+
+
+.outer::before {
+    content: "";
+     width:8rem ;
+    height: 8rem; 
+    background:#cbd6e8 ;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+
+.autoScsan-score {
+    font-weight: 600;
+
+
+}
 .title.scan { 
     white-space: nowrap;
     color: var(--text-color-title);
