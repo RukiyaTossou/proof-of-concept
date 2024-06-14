@@ -20,7 +20,6 @@ app.use(express.static('public'))
 app.use(express.urlencoded({extended: true}))
     
 
-
   const site = await fetchJson('https://fdnd-agency.directus.app/items/frd_site')
   const allScans = await fetchJson('https://fdnd-agency.directus.app/items/frd_scans')
   const nieuwekijkScans = await fetchJson('https://fdnd-agency.directus.app/items/frd_site?filter[scans][_eq]=11&fields=id,title,scans.*')
@@ -34,13 +33,19 @@ app.get('/', async function (request, response) {
   
 })
 
-//De route voor de detailpagina van een specifieke site
 app.get('/site/:id', async function (request, response) {
-  response.render('main', {
-    site: site.data, allScans: allScans.data, nieuwekijkScans: nieuwekijkScans.data 
-  })
+  const siteId = parse(request.params.id, ); 
 
-})
+
+  // Filter de scans op frd_site_id
+  const filteredScans = allScans.data.filter(scan => scan.frd_site_id === siteId);// Dit filtert de allScans dataset om alleen de scans voor de specifieke site op te halen.
+
+  response.render('main', {
+      site: site.data.find(s => s.id === siteId),  
+      allScans: filteredScans 
+  });
+});
+
 
 app.set('port', process.env.PORT || 8000)
 

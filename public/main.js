@@ -1,29 +1,47 @@
 // // scripts.js
-//     const carousel = document.querySelector('.allScans');
-//     const autoScans = document.querySelectorAll('.auto-scan');
-//     const leftButton = document.querySelector('.carousel-button-left');
-//     const rightButton = document.querySelector('.carousel-button-right');
+
     document.addEventListener('DOMContentLoaded', () => {
-        function animateDoughnutChart(endScore, speed) {
-            let chartBars = document.querySelectorAll('.outer');
-            let scorePercentage = document.querySelectorAll('.autoScan-score');
-            
-            let beginScore = 0;
-            let timer = setInterval(() => {
-                beginScore += 1;
-                let angle = (beginScore / 100) * 360;
-                
-                chartBars.forEach((chartBar, index) => {
-                    chartBar.style.background = `conic-gradient(#4285f4 ${angle}deg, #fff 0deg)`;
-                    scorePercentage[index].textContent = `${beginScore} %`;
+        const carousel = document.querySelector('.allScans');
+        const autoScans = document.querySelectorAll('.auto-scan');
+        const leftButton = document.querySelector('.carousel-button-left');
+        const rightButton = document.querySelector('.carousel-button-right');
+    
+        const scores = document.querySelectorAll('.autoScan-score');
+    // CAROUSEL
+            const slideWidth = autoScans[0].clientWidth;
+    
+            rightButton.addEventListener("click", () => {
+                carousel.scrollLeft += slideWidth;
+               
+            });
+    
+            leftButton.addEventListener("click", () => {
+                carousel.scrollLeft -= slideWidth;
+               
+            });
+    
+          // progress bar 
+              
+                scores.forEach(scoreElement => {
+                    const score = parseInt(scoreElement.textContent, 10); // de 10 zorgt ervoor dat er gehele getallen worden gebruikt
+                    animateDoughnutChart(score, 3, scoreElement); 
                 });
-
-                if (beginScore >= endScore) {
-                    clearInterval(timer);
-                }
-            }, speed);
-        }
-
-        // Call the function to animate the chart
-        animateDoughnutChart(54, 3); // 54% with speed of 50ms per increment
+        
+            
+            function animateDoughnutChart(endScore, speed, scoreElement) {
+                const chartBar = scoreElement.closest('.outer'); //closest voor de dichtbijzijnde outer classe
+                let beginScore = 0;//begin de score bij nul
+                let timer = setInterval(() => {
+                    beginScore += 1; //verhoog de beginscore 
+                    let angle = (beginScore / 100) * 360;//hele cirkel
+            
+                    chartBar.style.background = `conic-gradient(#4285f4 ${angle}deg, #fff 0deg)`; // de gradient kleuren 
+                    scoreElement.textContent = `${beginScore} %`; //de text (percentage)gaat mee met de progressbar
+            
+                    if (beginScore >= endScore) { //stop de animatie als de eidscore is bereikt 
+                        clearInterval(timer);
+                    }
+                }, speed);//de gegeven snelhei 3ms
+            }
+            
     });

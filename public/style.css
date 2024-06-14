@@ -1,3 +1,4 @@
+
 :root {
     --background-color-body:#F0F0F0;
     --background-color-article:#FFFFFF;
@@ -13,6 +14,42 @@ body {
 }
 header {
     display: flex;
+    justify-content: space-between;
+}
+
+.site-name {
+     text-decoration:none;
+    font-size:2rem;
+    color:black;
+    padding:1rem;
+    border-radius:0.5rem;
+    
+}
+
+.site-name:hover {
+    background-color:#ddddf0;
+}
+.navigatie-carousel {
+    display: flex;
+    /* align-self: unset; */
+    align-items:center;
+}
+
+/* Buttons */
+
+.carousel-button-left,  .carousel-button-right {
+    border:none;
+    background-color:#fff;
+    padding:0.5rem 1rem 0.5rem 1rem;
+    height:3rem;
+    border-radius:0.5rem;
+    margin: 0 0.5rem 0 0.5rem;
+    
+}
+
+.carousel-button-left:hover, 
+.carousel-button-right:hover {
+   background-color:  #bec3df;
 }
 
 .allScans {
@@ -55,38 +92,50 @@ header {
     scroll-snap-align: start;
      box-sizing: border-box;
     padding:20px;
+    justify-content:center;
+
    
 }
 .scan-details {
-    max-width: 400px;
+    /* max-width: 400px; */
+}
+
+.bar-chart {
+    background-color: #fff;
+    border-radius:0.5rem;
 }
 
 /* doughnnut chart */
 .doughnut-chart {
     width: 10rem;
     height: 10rem;
-    display:flex;
-    position:relative;
-   
-}
-
-.autoScan-score {
-    position: absolute;
-    z-index:10;
-    font-size:30px;
+    padding:0.5rem;
+    position: relative; /* Ensure relative positioning for absolute child */
 }
 
 .outer {
     width: 8rem;
     height: 8rem;
     padding: 1.5rem;
-     display: flex;
-       align-items: center;
+    display: flex;
+    align-items: center;
     justify-content: center;
-    border:1px solid #cbd6e8 ;
+    border: 1px solid #cbd6e8;
     border-radius: 50%;
     background: conic-gradient(#4285f4 1.5deg, #fff 0deg);
+    position: relative; /* Ensure relative positioning */
 }
+
+.autoScan-score {
+    position: absolute;
+    z-index: 10;
+    font-size: 30px;
+    top: 32%; 
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the score text */
+    font-weight: 600;
+}
+
 
 
 .outer::before {
@@ -102,14 +151,9 @@ header {
 }
 
 
-.autoScsan-score {
-    font-weight: 600;
-
-
-}
-.title.scan { 
-    white-space: nowrap;
+.title-scan { 
     color: var(--text-color-title);
+    font-size:2rem;
  
 }
 .scan-details {

@@ -3,7 +3,7 @@
         <h1>Kies je website</h1>
         <div>
             <% site.forEach(item => { %>
-                <a href="/site/<%= item.id %>"><%= item.title %></a>
+                <a  class="site-name" href="/site/<%= item.id %>"><%= item.title %></a>
             <% }); %>
         </div>
     </main>

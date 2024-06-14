@@ -1,95 +1,111 @@
-
 <%- include('components/head') %>
 <main>
     <header>
-        <h1><%= site.title %></h1> 
-        <button class="carousel-button-left" aria-label="links" ><img src="/images/pointer.svg" alt="button-left"></button> 
+      <a href="/">back</a>
+        <h1><%= site.title %></h1>
+        <div class="navigatie-carousel">
+          <button class="carousel-button-left" aria-label="links">
+            <img src="/images/pointer-left.svg" alt="button-left">
+        </button>
         <p>Date</p>
-        <button class="carousel-button-right" aria-label="rechts"><img src="/images/pointer.svg" alt="button-right"></button> 
+        <button class="carousel-button-right" aria-label="rechts">
+            <img src="/images/pointer-right.svg" alt="button-right">
+        </button>
+        </div>
+        
     </header>
-  
+    
+
     <section class="allScans">
-        <!-- automatisch scan resultaat met chart -->
-        <!-- als er scans zijn laat dan de layout zien  -->
         <% if (allScans && allScans.length > 0) { %>
             <% allScans.forEach(item => { %>
                 <section class="single-scan">
-
-                <article class="auto-scan" aria-label="Autoscan resultaat">
-                    <h1 class="title.scan"><%= item.title %></h1>
-                    <p class="scan-details"><%= item.description %></p>
-                    <div class="doughnut-chart">
-                        <div class="outer">
-                                <p class="autoScan-score"><%= item.score %> %</p>
-
+                    <article class="auto-scan" aria-label="Autoscan resultaat">
+                        <div>
+                            <h1 class="title-scan"><%= item.title %></h1>
+                            <p class="scan-details"><%= item.description %>]</p>
                         </div>
-                    </div>
-                    
-                </article>
-             
-                <section >
-                    <div class="bar-chart">
-                        <canvas id="myChart-<%= item.id %>"></canvas>
-                    </div>
-                      
-                      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-                      
-                      <script>
-                        const ctx<%= item.id %> = document.getElementById('myChart-<%= item.id %>');
-                      
-                        new Chart(ctx<%= item.id %>, {
-                          type: 'bar',
-                          data: {
-                            labels: ['Contrast', 'Structureel', 'Alt-teksten',  'Aria-labels'],
-                            datasets: [{
-                              label: 'Soorten foutmeldingen',
-                              data: [<% item.result.slice(1).forEach(error=> { %> '<%= error.amount %>', <%}); %>],
-                              borderWidth: 1    
-                            }] 
-                          },
-                          options: {
-                            scales: {
-                              y: {
-                                beginAtZero: true
-                              }
-                            }
-                          }
-                        });
-                      </script>
-                </section>
-                <section class="allErrors">
-                       
-                            <!-- Als er resultaten zijn en als lengte groter is dan 0 -->
-                            <!--Loop door elk error item en laat de title zien en errors -->
-                            <% if (item.result && item.result.length > 0) { %>
-                                <% item.result.forEach(error => { %>
-                                    <article class="single-error">
-                                        <p><%= error.title %></p>
-                                        
-                                        <p class="error-amount"> <%= error.amount %> </p>
-                                         <img class="icon-img-error-type" src="/images/landscape-icon.svg" alt="icon">
-                                        </article>
-                                <% }); %>
-                            <% } else  { %>
-                                <!-- als er geen scans zijn  -->
-                                <p>Geen errors gevonden </p> 
-                            <% } %>
-
-                           
+                        <div class="doughnut-chart">
+                            <div class="outer">
+                                <p class="autoScan-score"><%= item.score %>%</p>
                           
+                            </div>
+                        </div>
+                    </article>
+                    <section>
+                        <div class="bar-chart">
+                            <canvas id="myChart-<%= item.id %>"></canvas>
+                        </div>
+                        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+                        <script>
+                            document.addEventListener('DOMContentLoaded', function() {
+                                const ctx = document.getElementById('myChart-<%= item.id %>');
+                                const data = [<% item.result.forEach(error => { %> '<%= error.amount %>', <% }); %>];
+
+                                // lolipopChart:
+                                const lollipopChart = {
+                                    id: 'lollipopChart',
+                                    afterDatasetsDraw(chart, args, options) {
+                                        const { ctx, chartArea: { top, bottom, left, right, width, height }, scales: { x, y } } = chart;
+                                        chart.data.datasets.forEach((dataset, datasetIndex) => {
+                                            const meta = chart.getDatasetMeta(datasetIndex);
+                                            meta.data.forEach((bar, index) => {
+                                                const { x: barX, y: barY } = bar.tooltipPosition();
+                                                ctx.save();
+                                                ctx.beginPath();
+                                                ctx.arc(barX, barY, 5, 0, 2 * Math.PI);
+                                                ctx.fillStyle = 'blue';
+                                                ctx.fill();
+                                                ctx.restore();
+                                  // end
+                                            });
+                                        });
+                                    }
+                                };
+                                new Chart(ctx, {
+                                    type: 'bar',
+                                    data: {
+                                        labels: ['Contrast', 'Structureel', 'Alt-teksten', 'Aria-labels'],
+                                        datasets: [{
+                                            label: 'Soorten foutmeldingen',
+                                            data: data,
+                                            backgroundColor: 'rgba(66, 133, 244, 0.2)',
+                                            borderColor: 'rgba(66, 133, 244, 1)',
+                                            borderWidth: 1,
+                                            barPercentage:0.03  
+                                        }]
+                                    },
+                                    options: {
+                                        scales: {
+                                            y: {
+                                                beginAtZero: true
+                                            }
+                                        }
+                                    },
+                                    plugins: [lollipopChart]
+                                });
+                            });
+                        </script>
+                    </section>
+                    <section class="allErrors">
+                        <% if (item.result && item.result.length > 0) { %>
+                            <% item.result.forEach(error => { %>
+                                <article class="single-error">
+                                    <p><%= error.title %></p>
+                                    <p class="error-amount"><%= error.amount %></p>
+                                    <img class="icon-img-error-type" src="/images/landscape-icon.svg" alt="icon">
+                                </article>
+                            <% }); %>
+                        <% } else { %>
+                            <p>Geen errors gevonden</p>
+                        <% } %>
+                    </section>
                 </section>
-                </section>
-                
             <% }); %>
         <% } else { %>
             <p>No scans available for this site.</p>
-        <% } %> 
-     
+        <% } %>
     </section>
- 
-    
- <p class="percentage">54</p>
 </main>
 </body>
 </html>
-
