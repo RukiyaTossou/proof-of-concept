@@ -9,7 +9,6 @@ const app = express()
 
 // Stel ejs in als template engine
 app.set('view engine', 'ejs')
-
 // Stel de map met ejs templates inx
 app.set('views', './views')
 
@@ -34,7 +33,7 @@ app.get('/', async function (request, response) {
 })
 
 app.get('/site/:id', async function (request, response) {
-  const siteId = parse(request.params.id, ); 
+  const siteId = parse(request.params.id, ); //haal id
 
 
   // Filter de scans op frd_site_id
