@@ -1,5 +1,5 @@
 <%- include('components/head') %>
-
+<main>
     <header>
       <a href="/">back</a>
         <h1><%= site.title %></h1>
@@ -15,7 +15,7 @@
         
     </header>
     
-    <main>
+
     <section class="allScans">
         <% if (allScans && allScans.length > 0) { %>
             <% allScans.forEach(item => { %>
@@ -32,7 +32,7 @@
                             </div>
                         </div>
                     </article>
-
+                    
                     <section>
                         <div class="bar-chart">
                             <canvas id="myChart-<%= item.id %>"></canvas>

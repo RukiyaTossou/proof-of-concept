@@ -1,6 +1,6 @@
 // // scripts.js
 
-    document.addEventListener('DOMContentLoaded', () => {
+
         const carousel = document.querySelector('.allScans');
         const autoScans = document.querySelectorAll('.auto-scan');
         const leftButton = document.querySelector('.carousel-button-left');
@@ -56,5 +56,3 @@
                     }
                 }, speed);//de gegeven snelhei 3ms
             }
-            
-    });

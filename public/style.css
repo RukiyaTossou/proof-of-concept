@@ -12,6 +12,7 @@
 body {
     background-color: var(--background-color-body);
     font-family: "Outfit", sans-serif;
+    display:flex;
     justify-content: center;
 }
 
@@ -34,7 +35,7 @@ header {
 }
 .navigatie-carousel {
     display: flex;
-    /* align-self: unset; */
+ 
     align-items: center;
 }
 
