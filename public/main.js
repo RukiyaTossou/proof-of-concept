@@ -34,18 +34,18 @@
                 let timer = setInterval(() => {
                     beginScore += 1; //verhoog de beginscore 
                     let angle = (beginScore / 100) * 360;//hele cirkel
-                 
+                 // dit zijn if statements voor de kleuren van de score bar
                     if( beginScore <= 45 ){
-                        chartBar.style.background = `conic-gradient(#ff2600 ${angle}deg, #fff 0deg)`;
+                        chartBar.style.background = `conic-gradient(#ff2600 ${angle}deg, #fff 0deg)`;//rood
                         
                     } else if (beginScore > 45 && beginScore <= 75 ) {
-                        chartBar.style.background = `conic-gradient(#FF9800 ${angle}deg, #fff 0deg)`;
+                        chartBar.style.background = `conic-gradient(#FF9800 ${angle}deg, #fff 0deg)`;//oranje
                        
-                    }else if (beginScore > 76 && beginScore <= 99) {
-                        chartBar.style.background = `conic-gradient(#10ee40 ${angle}deg, #fff 0deg)`;
+                    } else if (beginScore > 76 && beginScore <= 99) {
+                        chartBar.style.background = `conic-gradient(#10ee40 ${angle}deg, #fff 0deg)`;//groen
                        
-                    }else {
-                        chartBar.style.background = `conic-gradient(#4285f4 ${angle}deg, #fff 0deg)`;  
+                    } else {
+                        chartBar.style.background = `conic-gradient(#4285f4 ${angle}deg, #fff 0deg)`;  //blauw
                     }
 
                     scoreElement.textContent = `${beginScore} %`; //de text (percentage)gaat mee met de progressbar 
