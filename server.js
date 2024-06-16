@@ -9,6 +9,7 @@ const app = express()
 
 // Stel ejs in als template engine
 app.set('view engine', 'ejs')
+
 // Stel de map met ejs templates inx
 app.set('views', './views')
 
@@ -18,6 +19,7 @@ app.use(express.static('public'))
 // Zorgt dat werken met request data makkelijker wordt
 app.use(express.urlencoded({extended: true}))
     
+
 
   const site = await fetchJson('https://fdnd-agency.directus.app/items/frd_site')
   const allScans = await fetchJson('https://fdnd-agency.directus.app/items/frd_scans')
@@ -33,15 +35,15 @@ app.get('/', async function (request, response) {
 })
 
 app.get('/site/:id', async function (request, response) {
-  const siteId = parse(request.params.id, ); //haal id
+  const siteId = parseInt(request.params.id, ); 
 
 
-  // Filter de scans op frd_site_id
-  const filteredScans = allScans.data.filter(scan => scan.frd_site_id === siteId);// Dit filtert de allScans dataset om alleen de scans voor de specifieke site op te halen.
+  // Filter the scans based on frd_site_id
+  const filteredScans = allScans.data.filter(scan => scan.frd_site_id === siteId);
 
   response.render('main', {
       site: site.data.find(s => s.id === siteId),  
-      allScans: filteredScans 
+      allScans: filteredScans  
   });
 });
 

@@ -40,6 +40,7 @@
                         <script>
                             document.addEventListener('DOMContentLoaded', function() {
                                 const ctx = document.getElementById('myChart-<%= item.id %>');
+                                //forEach-loop
                                 const data = [<% item.result.slice(1).forEach(error => { %> '<%= error.amount %>', <% }); %>];
 
                                 // lolipopChart:

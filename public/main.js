@@ -8,10 +8,10 @@
     
         const scores = document.querySelectorAll('.autoScan-score');
     // CAROUSEL
-            const slideWidth = autoScans[0].clientWidth;
+            const slideWidth = autoScans[0].clientWidth; // 1 autoscan
     
             rightButton.addEventListener("click", () => {
-                carousel.scrollLeft += slideWidth;
+                carousel.scrollLeft += slideWidth; //+ de lengtle van de auto scan
                
             });
     
