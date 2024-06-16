@@ -3,6 +3,12 @@
     --background-color-body:#F0F0F0;
     --background-color-article:#FFFFFF;
     --text-color-title: #5D666A;
+    --slecht:#ff2600;
+    --matig:#FF9800;
+    --goed:#10ee40;
+    --perfect:#4285f4;
+    
+
 }
 
 body {
@@ -54,11 +60,12 @@ header {
 
 .allScans {
     display: flex;
-    width: 70rem;
+    width: 72rem;
     overflow:hidden;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
      margin-left:1rem; 
+    scroll-behavior:smooth;
 }
 
 .single-scan{
@@ -164,18 +171,43 @@ header {
 .allErrors {
     max-width: 25rem;
     display:flex;
-    flex-wrap:wrap; 
+    flex-wrap:wrap;
+ 
  
 }
 
 .single-error {
-    padding: 2rem;
-    margin: 0 20px 20px;
-    display:flex;
-    align-items:center;
+    padding: 1rem;
+    margin: 0 20px  20px ;
     border-radius:0.5rem;
+    width:14rem;
+
+
+
     background-color: var(--background-color-article);
 }
-.icon-img-error-type {
-    margin-left:1rem;
+
+.result-info {
+    display:flex;
+    box-sizing:border-box;
+    justify-content: space-between;
 }
+
+
+.error-amount {
+    /* font-size: 2.3rem; */
+}
+
+
+.red {
+    background: conic-gradient(var(--slecht) 1.5deg, #fff 0deg);
+}
+
+.oranje {
+    background: conic-gradient(var(--matig) 1.5deg, #fff 0deg);
+}
+
+.groen {
+    background: conic-gradient(var(--goed) 1.5deg, #fff 0deg);
+}
+

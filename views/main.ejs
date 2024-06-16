@@ -4,11 +4,11 @@
       <a href="/">back</a>
         <h1><%= site.title %></h1>
         <div class="navigatie-carousel">
-          <button class="carousel-button-left" aria-label="links">
+          <button class="carousel-button-left" aria-label="vorige">
             <img src="/images/pointer-left.svg" alt="button-left">
         </button>
-        <p>Date</p>
-        <button class="carousel-button-right" aria-label="rechts">
+        <p aria-label="datum scan">Date</p>
+        <button class="carousel-button-right" aria-label="volgende">
             <img src="/images/pointer-right.svg" alt="button-right">
         </button>
         </div>
@@ -92,9 +92,43 @@
                         <% if (item.result && item.result.length > 0) { %>
                             <% item.result.forEach(error => { %>
                                 <article class="single-error">
-                                    <p><%= error.title %></p>
-                                    <p class="error-amount"><%= error.amount %></p>
-                                    <img class="icon-img-error-type" src="/images/landscape-icon.svg" alt="icon">
+                                    <p class="result-title"><%= error.title %></p>
+                                    <div class="result-info">
+                                      <p class="error-amount"><%= error.amount %></p>
+
+                                      <!-- images inladen -->
+                                      <% let img;
+                                      switch (error.title) {
+                                       case 'Ontdekte fouten':
+                                         img = 'ontdekte-fouten.svg';
+                                         break;
+
+                                        case 'Contrast fouten':
+                                         img = 'contrast-icon.svg';
+                                        break;
+
+                                       case 'Structurele fouten':
+                                         img = 'structuur.svg';
+                                       break;
+                                       case 'Ontbrekende alt-teksten':
+                                         img = 'landscape-icon.svg';
+                                       break;
+
+                                       case 'Ontbrekende aria-labels':
+                                         img = 'Aria-labels.svg';
+                                       break;
+
+                                       default: 
+                                       img = 'landscape-icon.svg';
+                                   
+                                      }
+                                      
+                                      %>
+                                   
+                                     <img class="icon-img-error-type" src="/images/<%= img %>" alt="<%= error.title %>-icoon">
+                               
+                                    </div>
+                                   
                                 </article>
                             <% }); %>
                         <% } else { %>
