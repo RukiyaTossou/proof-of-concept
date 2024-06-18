@@ -77,62 +77,21 @@
                           <p>Geen errors gevonden</p>
                       <% } %>
                   </section>
-                    
+                  <script>
+                    window.scanData = <%- JSON.stringify(allScans) %>;
+                  </script>
                     <section>
                         <div class="bar-chart">
+                          <h3>Soorten foutmeldingen</h3>
                             <canvas id="myChart-<%= item.id %>" width="400" height="200"></canvas>
                         </div>
+                        
+                        <div class="graph-chart">
+                       <h3>Toegankelijkheid</h3>
+                          <canvas id="graph-chart1>" width="400" height="200"></canvas>
+                      </div>
                         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-                        <script>
-                            document.addEventListener('DOMContentLoaded', function() {
-                                const ctx = document.getElementById('myChart-<%= item.id %>');
-                                //forEach-loop
-                                const data = [<% item.result.slice(1).forEach(error => { %> '<%= error.amount %>', <% }); %>];
-
-                                // lolipopChart:
-                                const lollipopChart = {
-                                    id: 'lollipopChart',
-                                    afterDatasetsDraw(chart, args, options) {
-                                        const { ctx, chartArea: { top, bottom, left, right, width, height }, scales: { x, y } } = chart;
-                                        chart.data.datasets.forEach((dataset, datasetIndex) => {
-                                            const meta = chart.getDatasetMeta(datasetIndex);
-                                            meta.data.forEach((bar, index) => {
-                                                const { x: barX, y: barY } = bar.tooltipPosition();
-                                                ctx.save();
-                                                ctx.beginPath();
-                                                ctx.arc(barX, barY, 5, 0, 2 * Math.PI);
-                                                ctx.fillStyle = 'blue';
-                                                ctx.fill();
-                                                ctx.restore();
-                                  // end
-                                            });
-                                        });
-                                    }
-                                };
-                                new Chart(ctx, {
-                                    type: 'bar',
-                                    data: {
-                                        labels: ['Contrast', 'Structureel', 'Alt-teksten', 'Aria-labels'],
-                                        datasets: [{
-                                            label: 'Soorten foutmeldingen',
-                                            data: data,
-                                            backgroundColor: 'rgba(66, 133, 244, 0.2)',
-                                            borderColor: 'rgba(66, 133, 244, 1)',
-                                            borderWidth: 1,
-                                            barPercentage:0.03  
-                                        }]
-                                    },
-                                    options: {
-                                        scales: {
-                                            y: {
-                                                beginAtZero: true
-                                            }
-                                        }
-                                    },
-                                    plugins: [lollipopChart]
-                                });
-                            });
-                        </script>
+                        
                     </section>
                   
                 </section>
@@ -142,5 +101,6 @@
         <% } %>
     </section>
 </main>
+
 </body>
 </html>

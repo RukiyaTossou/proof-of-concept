@@ -66,12 +66,11 @@ header h1 {
 
 .allScans {
     display: flex;
-    width: 72rem;
+    width: 70rem;
     overflow: hidden;
     overflow-x: auto;
-    
     scroll-snap-type: x mandatory;
-     margin-left: 1rem; 
+    margin-left: 1rem;
     scroll-behavior: smooth;
     scrollbar-width:none;
 }
@@ -80,6 +79,7 @@ header h1 {
     display: grid;
     grid-template-columns: 1fr 1fr;
     /* grid-template-rows: 1fr 1fr 1fr; */
+    width: 78rem;
 }
 
 .single-scan .allErrors {
@@ -110,10 +110,6 @@ header h1 {
     justify-content: center;
     margin-bottom:20px;
     
-}
-
-.scan-details {
-    /* max-width: 400px; */
 }
 
 .bar-chart {
@@ -176,13 +172,16 @@ header h1 {
     /* max-width: 25rem; */
     display: flex;
     flex-wrap: wrap;
+    max-height: 46rem;
 }
 
 .single-error {
     padding: 1rem;
-    margin: 0 20px  20px ;
+    margin: 0 20px  20px;
     border-radius: 0.5rem;
     width: 14rem;
+    height: 8rem;
+    box-sizing: border-box;
     background-color: var(--background-color-article);
 }
 
@@ -215,13 +214,29 @@ header h1 {
 @media (max-width: 1100px){
     body {
         display: block;
+        
+    }
+
+    .allScans {
+        /* justify-content:center; */
+        overflow:hidden;
+        width:55rem;
     }
     .allErrors {
         max-width: none;
+        margin:0;
+    }
+
+    .single-error {
+   
+        margin: 0 20px 20px 0;
+        height:auto;
     }
     .single-scan {
         grid-template-columns: 1fr; /* Eén kolom bij 900px en minder */
-        grid-template-rows: 20rem 1fr 1fr;
+        grid-template-rows: 20.3rem 1fr 1fr;
+        margin:1rem;
+    
     }
 
     .single-scan .allErrors,
