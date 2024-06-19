@@ -7,7 +7,7 @@
           <button class="carousel-button-left" aria-label="vorige">
             <img src="/images/pointer-left.svg" height="15" width="15" alt="button-left">
         </button>
-        <p id="current-scan-date">Date:<span></span></p>
+        <p  id="current-scan-date">Date:<span></span></p>
 
         <button class="carousel-button-right" aria-label="volgende">
             <img src="/images/pointer-right.svg" height="15" width="15" alt="button-right">
@@ -19,8 +19,10 @@
 <div class="js-dissabled">
   <p>Scroll om meer scans te zien!</p>
 </div>
+
     <section class="allScans">
         <% if (allScans && allScans.length > 0) { %>
+          <% console.log(allScans.forEach(item => {item.id}))%>
             <% allScans.forEach(item => { %>
                 <section class="single-scan"   id="scan-<%= item.id %>"  data-scan-date="<%= item.date %>">
                     <article class="auto-scan">
@@ -36,7 +38,7 @@
                         </div>
                     </article>
                     <section class="allErrors">
-                      <% if (item.result && item.result.length > 0) { %>
+                      <% if (item.result && item.result.length > 0) { %>  
                           <% item.result.forEach(error => { %>
                               <article class="single-error">
                                   <p class="result-title"><%= error.title %></p>
@@ -78,18 +80,27 @@
                       <% } %>
                   </section>
                   <script>
-                    window.scanData = <%- JSON.stringify(allScans) %>;
+                    window.scanData = <%- JSON.stringify(allScans) %>
                   </script>
                     <section>
-                        <div class="bar-chart">
+                        <div class="bar-chart"> 
                           <h3>Soorten foutmeldingen</h3>
                             <canvas id="myChart-<%= item.id %>" width="400" height="200"></canvas>
+                  <!-- Als er geen js is  -->
+                              <div class="js-dissabled resultaat-lijst-errors" >
+                                  <p><strong>Contrast:</strong> <%= item.result[1].amount %><p>
+                                  <p><strong>Structureel:</strong> <%= item.result[2].amount %></p>
+                                  <p><strong>Alt-teksten:</strong> <%= item.result[3].amount %></p>
+                                  <p><strong>Aria-labels:</strong> <%= item.result[4].amount %></p>
+                              
+                              </div>
+                            
                         </div>
-                        
-                        <div class="graph-chart">
-                       <h3>Toegankelijkheid</h3>
-                          <canvas id="graph-chart1>" width="400" height="200"></canvas>
-                      </div>
+                        <!-- <div class="lineChart">
+                          <h3>Toegankelijkheid</h3>
+                          <canvas id="lineChart2-<%= item.id %>" width="400" height="200"></canvas>
+                        </div>       -->
+                
                         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
                         
                     </section>
@@ -99,6 +110,11 @@
         <% } else { %>
             <p>No scans available for this site.</p>
         <% } %>
+        
+        <!-- <div class="graph-chart">
+          <h3>Toegankelijkheid</h3>
+             <canvas id="graph-chart1>" width="400" height="200"></canvas>
+         </div> -->
     </section>
 </main>
 

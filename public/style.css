@@ -112,7 +112,7 @@ header h1 {
     
 }
 
-.bar-chart {
+.bar-chart, .graph-chart {
     background-color: #fff;
     border-radius: 0.5rem;
 }
@@ -185,6 +185,7 @@ header h1 {
     background-color: var(--background-color-article);
 }
 
+
 .result-info {
     display: flex;
     flex-direction: row;
@@ -198,6 +199,12 @@ header h1 {
     color: var(--text-color-title);
     margin:0;
 }
+
+.resultaat-lijst-errors {
+    text-align:center;
+     padding: 0.5rem 0 0.5rem ;
+}
+
 /* classlist voor later */
 .red {
     background: conic-gradient(var(--slecht) 1.5deg, #fff 0deg);
@@ -221,6 +228,11 @@ header h1 {
         /* justify-content:center; */
         overflow:hidden;
         width:55rem;
+            overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    margin-left: 1rem;
+    scroll-behavior: smooth;
+    scrollbar-width:none;
     }
     .allErrors {
         max-width: none;
@@ -234,7 +246,7 @@ header h1 {
     }
     .single-scan {
         grid-template-columns: 1fr; /* Eén kolom bij 900px en minder */
-        grid-template-rows: 20.3rem 1fr 1fr;
+        grid-template-rows: 20.3rem 15.5rem 1fr;
         margin:1rem;
     
     }
@@ -270,7 +282,7 @@ header h1 {
     }
 
     header {
-        justify-content: space-between;
+        justify-content: space-between; 
     }
     
 .carousel-button-left, .carousel-button-right {
@@ -284,5 +296,6 @@ header h1 {
 }
     .js-dissabled {
         display: none;
+       
     }
 }

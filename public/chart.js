@@ -48,6 +48,48 @@ scans.forEach((item, index) => {
         },
         plugins: [lollipopChart]
     });
+
+
+    
 });
 
-// area chart
+//other 
+
+
+// Maak voor elke scan een grafiek aan
+scans.forEach((item, index) => {
+    const lineChartCtx = document.getElementById(`lineChart2-${item.id}`).getContext('2d');
+    // const data2 =  allScans.forEach(items => items.score);
+    const data1 = item.score;
+    const scores = scanData.map(item => item.score);
+
+    // Data voor de Line Chart
+    const labels = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Aug','Sep','Oct','Nov','Dec'];
+    const lineChartData = {
+      labels: labels,
+      datasets: [{
+        label: 'toegankelijkheid percentage',
+        data: ["54", "75","85","79","84"],
+        fill: true,
+        borderColor: 'rgb(75, 192, 192)',
+        tension: 0.1
+      }]
+    };
+
+    // Nieuwe Line Chart aanmaken
+    new Chart(lineChartCtx, {
+      type: 'line',
+      data: lineChartData,
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true,
+            suggestedMax: 100
+          }
+        }
+      }
+    });
+
+    
+});
+
