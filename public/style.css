@@ -108,7 +108,7 @@ header h1 {
     box-sizing: border-box;
     padding: 20px;
     justify-content: center;
-    margin-bottom:20px;
+    /* margin-bottom:20px; */
     
 }
 
@@ -203,6 +203,12 @@ header h1 {
 .resultaat-lijst-errors {
     text-align:center;
      padding: 0.5rem 0 0.5rem ;
+}
+
+.bar-chart h3 {
+    color:var(--text-color-title);
+    padding:0.5rem ;
+    font-size:1.3rem;
 }
 
 /* classlist voor later */
