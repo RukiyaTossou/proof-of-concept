@@ -158,7 +158,7 @@ function rightScroll() {
                         chartBar.style.background = `conic-gradient(#10ee40 ${angle}deg, #b8fcc7 0deg)`;//groen
                        
                     } else {
-                        chartBar.style.background = `conic-gradient(#4285f4 ${angle}deg, #abcbff 0deg)`;  //blauw
+                        chartBar.style.background = `conic-gradient(#4285f4 ${angle}deg, #fff 0deg)`;  //blauw
                     }
 
                     scoreElement.textContent = `${beginScore} %`; //de text (percentage)gaat mee met de progressbar 

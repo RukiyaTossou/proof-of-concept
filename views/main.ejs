@@ -4,8 +4,7 @@
       <a href="/">back</a>
         <h1><%= site.title %>/home</h1>
         <div class="navigatie-carousel">
-          <button class="carousel-button
-          -left" aria-label="vorige">
+          <button class="carousel-button-left" aria-label="vorige">
             <img src="/images/pointer-left.svg" height="15" width="15" alt="button-left">
         </button>
         <p  id="current-scan-date">Date:<span></span></p>
@@ -18,7 +17,7 @@
     </header>
     
 <div class="js-dissabled">
-  <p>Scroll om meer scans te zien!</p>
+  <p>Scroll om meer scans te zien van andere dates!</p>
 </div>
 
     <section class="allScans">
@@ -99,7 +98,7 @@
                         </div>
                         <!-- <div class="lineChart">
                           <h3>Toegankelijkheid</h3>
-                          <canvas id="lineChart2-<%= item.id %>" width="400" height="200"></canvas>
+                          <canvas id="lineChart2-" width="400" height="200"></canvas>
                         </div>       -->
                 
                         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
