@@ -18,7 +18,7 @@
 <img src= "https://github.com/RukiyaTossou/proof-of-concept/assets/114156045/fc946273-9ba7-4fb4-a413-241fa359f405" >
 
  Desktop:
- <img src= "https://github.com/RukiyaTossou/proof-of-concept/assets/114156045/0fe4e7c9-760a-4f6d-9ce0-3c578339bbbd"  width="500" height="500">
+ <img src= "https://github.com/RukiyaTossou/proof-of-concept/assets/114156045/0fe4e7c9-760a-4f6d-9ce0-3c578339bbbd" >
 
  Tablet: 
   <img src= "https://github.com/RukiyaTossou/proof-of-concept/assets/114156045/dc03ee65-24b9-47db-9337-83ac2fe00c8f"  width="500" height="500">
