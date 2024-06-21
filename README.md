@@ -57,7 +57,8 @@ Het live zetten van je project kan met behulp van cyclic.
 <!-- Bij Instalatie staat hoe een andere developer aan jouw repo kan werken -->
 
 ## Bronnen
-
+- https://www.chartjs.org
+- https://www.futureready.design/about
 ## Licentie
 
 This project is licensed under the terms of the [MIT license](./LICENSE).
