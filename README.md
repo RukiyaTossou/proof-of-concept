@@ -15,12 +15,14 @@
 ## Beschrijving
  Voor het project met AccesDAsh is de opdracht dat ik een detail pagina maak dat de toegankelijkheidscore van websites laat zien, met een scan die automatisch elke maand word gedraait.
 
-<img src= "https://github.com/RukiyaTossou/proof-of-concept/assets/114156045/fc946273-9ba7-4fb4-a413-241fa359f405"  width="400" height="400">
+<img src= "https://github.com/RukiyaTossou/proof-of-concept/assets/114156045/fc946273-9ba7-4fb4-a413-241fa359f405" >
 
  Desktop:
- ![image](https://github.com/RukiyaTossou/proof-of-concept/assets/114156045/0fe4e7c9-760a-4f6d-9ce0-3c578339bbbd)
+ <img src= "(https://github.com/RukiyaTossou/proof-of-concept/assets/114156045/0fe4e7c9-760a-4f6d-9ce0-3c578339bbbd"  width="500" height="500">
+
  Tablet: 
- ![image](https://github.com/RukiyaTossou/proof-of-concept/assets/114156045/dc03ee65-24b9-47db-9337-83ac2fe00c8f)
+  <img src= "https://github.com/RukiyaTossou/proof-of-concept/assets/114156045/dc03ee65-24b9-47db-9337-83ac2fe00c8f"  width="500" height="500">
+
 
 <!-- Bij Beschrijving staat kort beschreven wat voor project het is en wat je hebt gemaakt -->
 <!-- Voeg een mooie poster visual toe 📸 -->
